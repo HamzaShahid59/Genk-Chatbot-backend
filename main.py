@@ -45,6 +45,10 @@ async def chat_endpoint(chat_request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/")
+def health_check():
+    return {"message": "API is Running"}
+
 @app.get("/health")
 def health_check():
     return {"status": "healthy", "service": "running"}
